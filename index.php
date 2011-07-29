@@ -10,14 +10,18 @@
 <div id="wrapper">
 
 <?php 
+
+//Go get the database.
+//Note: This will pull the database every single time you refresh the browser, it is super slow!
+
 echo exec('rsync -e ssh root@Albert-N900.local:/home/user/.rtcom-eventlogger/el-v1.db '.
-	dirname(__FILE__).'/el_'.date('Y-m-d_H.i.s').'.sqlite');
+	dirname(__FILE__).'/el'.sqlite');
 
 try 
 {
     //connect to SQLite database
 
-    $database = new PDO("sqlite:el-v1.db");
+    $database = new PDO("sqlite:el.db");
     //echo "Handle has been created ...... <br><br>";
 
 }
